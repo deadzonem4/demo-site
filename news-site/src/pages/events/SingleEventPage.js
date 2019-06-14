@@ -8,7 +8,7 @@ const SingleEventPage = (props) => {
 		<div className="live-scores-page">
       <div className="container mobile-grid">
       	<ScoresMenu/>
-      	<EventsData dataLink={"" + props.match.params.id} token ="">
+      	<EventsData dataLink={"https://football-api.msk.bg/events/" + props.match.params.id} token ="">
           <SingleEvent/>
       	</EventsData>
       </div>

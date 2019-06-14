@@ -10,7 +10,7 @@ const LeaguePage = (props) => {
       <ReactTitle title="Всички мачове - Winbet"/>
       <div className="container mobile-grid">
       	<ScoresMenu/>
-      	<EventsData dataLink="" token="">
+      	<EventsData dataLink="https://football-api.msk.bg/events" token="">
           <AllEvents/>
       	</EventsData>
       </div>

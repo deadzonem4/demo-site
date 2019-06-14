@@ -10,7 +10,7 @@ const AllEventsPage = (props) => {
       <ReactTitle title="Мачове на живо - Winbet"/>
       <div className="container mobile-grid">
       	<ScoresMenu/>
-      	<EventsData dataLink="" token="">
+      	<EventsData dataLink="https://football-api.msk.bg/events/live" token="">
           <LiveEvents/>
       	</EventsData>
       </div>

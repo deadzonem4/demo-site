@@ -11,10 +11,10 @@ const LiveScoresPage = (props) => {
       <ReactTitle title="Всички мачове - Winbet"/>
       <div className="container mobile-grid">
         <ScoresMenu/>
-        <EventsData dataLink="" token="">
+        <EventsData dataLink="https://football-api.msk.bg/events/live" token="">
           <PopularLiveEvents/>
         </EventsData>
-        <EventsData dataLink="" token="">
+        <EventsData dataLink="https://football-api.msk.bg/events?group_by=tournament_season_stage&client_order=sportalios" token="">
           <PopularEvents/>
         </EventsData>
       </div>

@@ -10,7 +10,7 @@ const FutureEventsPage = (props) => {
       <ReactTitle title="Бъдещи мачове - Winbet"/>
       <div className="container mobile-grid">
       	<ScoresMenu/>
-      	<EventsData dataLink="" token="">
+      	<EventsData dataLink="https://football-api.msk.bg/events" token="">
           <FutureEvents/>
       	</EventsData>
       </div>

@@ -12,7 +12,7 @@ const FinishedEventsPage = (props) => {
       <div className="container mobile-grid">
       	<ScoresMenu/>
       	<EventsData 
-          dataLink={`/events?from_time=${moment().subtract(1, 'days').format("YYYY-MM-DD")}T${moment().format("HH")}%3A48%3A44%2B00%3A00&to_time=${moment().format("YYYY-MM-DD")}T${moment().format("HH")}%3A48%3A44%2B00%3A00`}
+          dataLink={`https://football-api.msk.bg/events?from_time=${moment().subtract(1, 'days').format("YYYY-MM-DD")}T${moment().format("HH")}%3A48%3A44%2B00%3A00&to_time=${moment().format("YYYY-MM-DD")}T${moment().format("HH")}%3A48%3A44%2B00%3A00`}
           token=""
         >
           <FinishedEvents/>

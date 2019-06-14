@@ -151,7 +151,7 @@ class SingleEvent extends React.Component {
           {
           (this.state.openSummary) ?
             (
-              <EventsData dataLink={`https://football-api.msk.bg/events/${data.id}/incidents`} token="Basic YmU0ZWU0YTY5Y2RhZDRiZDQxNTJjOGYzMDMxNWIxNWM6NTA2ZTZjNmEzNWI0YjJkMWViNTI0NmVlYTc2NTBlOGY=">
+              <EventsData dataLink={`https://football-api.msk.bg/events/${data.id}/incidents`} token="">
                 <SummaryModal allData={data}/>
               </EventsData>
             ) :
