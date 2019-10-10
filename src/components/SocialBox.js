@@ -2,7 +2,7 @@ import React from "react";
 import SocialLinks from './SocialLinks.js'
 import SocialIcons from './SocialIcons.js'
 
-const SocialBox = props => {
+const SocialBox = () => {
 
   return (
     <div className="social-box">

@@ -26,12 +26,13 @@ const ImportantNews = props => {
   };
   
   const lastNews = props.news;
+  
 
   const news = lastNews.map((data, index) =>{
     const imageUrl = data.image.data ? data.image.data.urls.cropped : undefined;
     if (data.important) {
       return(
-        <div key={data.id} className="col-4">
+        <div key={index} className="col-4">
           <Link to={`/articles/${data.id}`} className="important-news-box">
             <div className="news-photo-important">
               <div className="news-red-line"></div>
@@ -44,7 +45,7 @@ const ImportantNews = props => {
             <div className="news-content-important">
               <p className="news-category">{data.category.title}</p>
               <h2 className="title">{data.title}</h2>
-              <FullDate date={data.created_at} customClass="time" />
+              <FullDate date={data.published_at} customClass="time" />
             </div>
           </Link>
           <div className="important-news-links">

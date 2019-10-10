@@ -7,14 +7,14 @@ import {ReactTitle} from 'react-meta-tags';
 import Loader from 'react-loader-spinner';
 import { useHttps, checkArticlesDate, sortArticles } from "../Helpers";
 
-const TennisNews = props => {
+const BoxNews = props => {
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
   const [isLoading, fetchedData] = useHttps(
-    `&category=2019061908334998696`,
+    `&category=2019091811180756318`,
     '',
     []
   ); 
@@ -53,6 +53,21 @@ const TennisNews = props => {
     );
   }
   
+  if (news.length === 0) {
+    return (
+      <div className="row">
+      <ReactTitle title={props.title + " - Winbet"}/>
+      <div className="col-md-8 col-sm-12 custom-mobile-grid">
+        <div className="all-news-box">
+          <h2 className="news-dark-title">{props.title}</h2>
+          <p className="articles-comming-soon">Очаквайте скоро</p>
+        </div>
+      </div>
+      <Sidebar/>
+    </div>
+    );
+  }
+
   return (
     <div className="row">
       <ReactTitle title={props.title + " - Winbet"}/>
@@ -67,4 +82,4 @@ const TennisNews = props => {
   );
 }
 
-export default TennisNews;
+export default BoxNews;

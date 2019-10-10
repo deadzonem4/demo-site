@@ -2,7 +2,7 @@ import React from 'react';
 import HomeNews from '../components/articles/HomeNews';
 import ImportantNews from '../components/articles/ImportantNews';
 
-const HomePage = props => {
+const HomePage = () => {
 
   return (
     <div className="home-content-wrapper home">

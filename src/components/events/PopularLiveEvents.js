@@ -6,7 +6,7 @@ import Loader from 'react-loader-spinner';
 
 var leagueTitle = null;
 
-const LiveEvents = props => {
+const LiveEvents = () => {
 
   useEffect(() => {
     leagueTitle = null;
@@ -19,7 +19,7 @@ const LiveEvents = props => {
   }, []);
 
 	const [isLoading, fetchedData] = useHttpsInterval(
-    'https:/events/live',
+    '/events/live',
     ''
   );
 
@@ -42,7 +42,7 @@ const LiveEvents = props => {
       checkTitle = true;
     }
     return(
-      <div key={data.id}>
+      <div key={index}>
         <div className="league-title">
           {checkTitle ? 
             (

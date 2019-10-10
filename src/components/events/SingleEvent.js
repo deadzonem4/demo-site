@@ -18,7 +18,7 @@ const SingleEvent = props => {
   const [statistics, setStatistics] = useState(false);
   const [h2h, setH2h] = useState(false);
   const [isLoading, fetchedData] = useHttpsInterval(
-    `https://events/${props.id}`,
+    `/events/${props.id}`,
     ''
   );
   const data = fetchedData ? fetchedData : [];

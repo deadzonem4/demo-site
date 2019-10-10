@@ -5,42 +5,26 @@ import PopularLiveEvents from '../components/events/PopularLiveEvents';
 import LeagueEvents from '../components/events/LeagueEvents';
 import CountryMenu from '../components/events/CountryMenu';
 import {ReactTitle} from 'react-meta-tags';
+import {  useHandleHttp  } from '../components/Helpers';
 
-const LiveScoresPage = props => {
+const LiveScoresPage = () => {
 
-  const [openLeague, setOpentLeague] = useState(false);
+  
   const [leagueId, setLeagueId] = useState('');
   const [leagueName, setLeagueName] = useState('');
-  const [leagueSeason, setLeagueSeason] = useState(0);
+  const [openLeague, setOpenLeague] = useState(false);
 
+  const leagueSeason = useHandleHttp('/tournaments/' + JSON.parse(sessionStorage.getItem('leagueId')));
 
   const handleLeague = (event) => {
+
+    setOpenLeague(true);
     sessionStorage.setItem('leagueId', JSON.stringify(event.target.id));
     sessionStorage.setItem('leagueName', JSON.stringify(event.target.className));
 
     setLeagueName(JSON.parse(sessionStorage.getItem('leagueName')));
     setLeagueId(JSON.parse(sessionStorage.getItem('leagueId')));
 
-    fetch('https://tournaments/' + JSON.parse(sessionStorage.getItem('leagueId')), { 
-      method: 'get', 
-      headers: new Headers({
-        "content-type": "application/json",
-        authorization: "",
-        accept: "application/json"
-      }), 
-     })
-    .then(response => {
-      if (!response.ok) { throw response }
-      return response.json()
-    })
-    .then(api => {
-      setLeagueSeason(api.seasons[0].id);
-      setOpentLeague(true);
-      sessionStorage.setItem('season', JSON.stringify(leagueSeason));
-    })
-    .catch(error => {
-      console.log('error');
-    });
 
     window.scrollTo(0, 0);
   }
@@ -55,13 +39,13 @@ const LiveScoresPage = props => {
             <div className="popular-events-title">
               <h4>Топ първенства</h4>
               </div>
-                <CountryMenu handleLeague={handleLeague.bind(this)} />
+                <CountryMenu handleLeague={handleLeague} />
               </div>
             </div>
           <div className="choose-league-page-content">
             {(openLeague) ?
               ( 
-                <LeagueEvents leagueId={leagueId} leagueName={leagueName} seasonId={leagueSeason}/>
+                <LeagueEvents leagueId={leagueId} leagueName={leagueName} seasonId={leagueSeason} />
               ) :
               (
                 <Fragment>

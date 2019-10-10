@@ -1,3 +1,10 @@
+/* 
+==============================================================
+TO DO !!!
+SPLIT CSS TO COMPONENTS FILES
+==============================================================
+*/
+
 body{
 	font-family: 'Roboto', sans-serif;
 }
@@ -21,6 +28,26 @@ body{
   height: 200px;
 }
 /*------------------------------Header---------------------*/
+.articles-category-menu{
+  display: none;
+}
+.articles-category-menu .dropdown-menu{
+  padding: 5px 10px!important;
+  z-index: 9999!important;
+}
+.articles-category-menu .nav-item{
+  margin: 2px 0;
+}
+.articles-category-menu button, .articles-category-menu .dropdown.show button, .articles-category-menu button:hover, .articles-category-menu button:focus, .articles-category-menu .btn-secondary:not(:disabled):not(.disabled).active, .articles-category-menu .btn-secondary:not(:disabled):not(.disabled):active, .articles-category-menu .show>.btn-secondary.dropdown-toggle{
+  color: #fff!important;
+  background-color: #d5071c!important;
+  font-size: 15px!important;
+  text-transform: capitalize!important;
+  font-weight: normal!important;
+  border: none!important;
+  outline: none!important;
+  box-shadow: none!important;
+}
 .navbar-nav .nav-link{
 	color: #fff;
 	font-size: 17px;
@@ -84,6 +111,13 @@ body{
   outline: none!important;
 }
 @media only screen and (max-width: 991px){
+  .down-menu{
+    display: none;
+  }
+  .articles-category-menu{
+    display: block;
+    padding: 10px 0;
+  }
   .navbar-brand img{
     max-width: 120px;
   }
@@ -101,7 +135,7 @@ body{
     background-color: transparent;
   }
   .down-menu-link{
-    font-size: 14px;
+    font-size: 16px;
   }
   .navbar-nav .nav-link {
     padding: 10px 15px!important;
@@ -187,6 +221,40 @@ body{
   max-width: 600px;
   margin: 40px auto 80px
 }
+.pages-slider{
+  width: 140px;
+}
+.slick-prev:before, .slick-next:before , .slick-prev.slick-disabled:before, .slick-next.slick-disabled:before{
+  font-style: normal;
+  font-variant: normal;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  content: "\f104";
+  color: #fff;
+  font-size: 20px;
+  opacity: 1;
+  height: 100%;
+}
+.pages-slider .slick-next, .pages-slider .slick-prev{
+  background-color: #212121;
+  width: 24px;
+  height: 22px;
+  top: 13px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.pages-slider .slick-disabled{
+  opacity: .6;
+}
+.pages-slider .slick-prev:before{
+  content: "\f104";
+}
+.pages-slider .slick-next:before{
+  content: "\f105";
+}
 .news-dark-title{
   font-size: 24px;
   font-weight: 500;
@@ -200,7 +268,7 @@ body{
   color: #fff;
   font-size: 14px;
   font-weight: 600;
-  margin-right: 5px;
+  margin: 0 2px;
   cursor: pointer;
   transition: .2s;
   display: flex;
@@ -341,6 +409,7 @@ div[data-widgetid="player"] .force-mobile .widget-container .player-club .teams-
 }
 .custom-demo-embeded-video iframe{
   width: 100%!important;
+  max-height: 400px!important;
 }
 .image-gallery button:focus{
   outline: none!important;
@@ -365,6 +434,9 @@ div[data-widgetid="player"] .force-mobile .widget-container .player-club .teams-
   }
 }
 @media only screen and (max-width: 575px){
+  .articles-comming-soon{
+    padding-left: 7px;
+  }
   .editor-content .time-block {
     margin-bottom: 15px;
   }
@@ -945,6 +1017,13 @@ iframe{
   margin: 0;
   padding-left: 5px;
   font-size: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.popular-events-title h4 span{
+  font-size: 16px;
+  cursor: pointer;
 }
 .away-team-box img{
   margin: 0 5px 0 0;
@@ -958,6 +1037,9 @@ iframe{
   }
   .popular-events-title h4{
     font-size: 18px;
+  }
+  .popular-events-title h4 span{
+    font-size: 14px;
   }
 }
 @media only screen and (max-width: 767px){
@@ -1065,8 +1147,99 @@ iframe{
   .scores-item.live a {
     padding: 2px 20px;
   }
-  .scores-item button, .scores-item .dropdown.show button, .scores-item button:hover, .scores-item button:focus, .btn-secondary:not(:disabled):not(.disabled).active, .btn-secondary:not(:disabled):not(.disabled):active, .show>.btn-secondary.dropdown-toggle{
+  .scores-item button, .scores-item .dropdown.show button, .scores-item button:hover, .scores-item button:focus, .scores-item .btn-secondary:not(:disabled):not(.disabled).active, .scores-item .btn-secondary:not(:disabled):not(.disabled):active, .scores-item .show>.btn-secondary.dropdown-toggle{
     padding: 3px 10px;
+  }
+}
+/* -----------------------------------------Standings------------------------------ */
+.standings-box{
+  padding: 10px 0 20px;
+}
+.standings-row{
+  display: flex;
+  align-items: center;
+  padding: 6px 0;
+  font-size: 15px;
+  color: #403d3d;
+  border-bottom: solid 2px #fff;
+  justify-content: space-between;
+}
+.standings-left-col, .standings-team-col{
+  display: flex;
+  align-items: center;
+}
+.standings-stats-col span, .standings-legend span{
+  padding: 5px;
+  display: inline-block;
+  text-align: center;
+}
+.standings-points-col{
+  width: 55px;
+}
+.standings-goals-col{
+  width: 70px;
+}
+.standings-wins-col, .standings-played-col, .standings-draws-col, .standings-defeats-col{
+  width: 35px;
+}
+.standings-legend{
+  text-align: right;
+}
+.standings-team-col img{
+  width: 32px;
+  margin-right: 5px; 
+}
+.standings-list{
+  background-color: #efeeee;
+}
+.standings-pos-col{
+  background-color: #616161;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  margin: 0 10px 0 5px;
+  border-radius: 4px;
+  font-size: 13px;
+}
+@media only screen and (max-width: 767px){
+  .standings-row{
+    font-size: 12px;
+  }
+  .standings-team-col img{
+    width: 28px;
+    margin-right: 3px; 
+  }
+  .standings-pos-col{
+    width: 20px;
+    height: 20px;
+    font-size: 11px;
+    margin: 0 5px 0 3px;
+  }
+  .standings-points-col{
+    width: 35px;
+  }
+  .standings-stats-col .standings-points-col{
+    color: #f6921d;
+  }
+  .standings-goals-col{
+    width: 40px;
+  }
+  .standings-wins-col, .standings-played-col, .standings-draws-col, .standings-defeats-col{
+    width: 20px;
+  }
+  .standings-legend{
+    font-size: 13px;
+  }
+  .standings-stats-col span, .standings-legend span{
+    padding: 5px 0;
+  }
+}
+@media only screen and (max-width: 380px){
+  .standings-team-col{
+    max-width: 120px;
   }
 }
 /*------------------------------------------Single event----------------------------*/
@@ -1905,3 +2078,6 @@ footer{
 /*------------*/
 /*------------------*/
 /*------------------------*/
+div[data-widgetid="team"] .widget-container .team-name{
+  align-items: center;
+}

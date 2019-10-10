@@ -5,7 +5,7 @@ import { useHttps } from '../components/Helpers.js';
 const SingleArticleData = props => {
 
   const [isLoading, fetchedData] = useHttps(
-    `https://articles/${props.id}`,
+    `/articles/${props.id}`,
     ''
   );
   if (isLoading) {

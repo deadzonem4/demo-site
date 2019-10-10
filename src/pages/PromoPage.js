@@ -1,7 +1,7 @@
 import React from 'react';
 import PromoArticle from '../components/articles/PromoArticle';
 
-const PromoPage = props => {
+const PromoPage = () => {
 
   return (
 		<div className="promo-page">

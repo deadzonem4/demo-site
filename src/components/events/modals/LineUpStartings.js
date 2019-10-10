@@ -5,7 +5,7 @@ const LineUpStartings = props =>{
   const leftEvents = props.lineUpData.home_team.players.map((data, index) =>{
     if(data.home_team && data.event_player_type.category === "start"){
       return(
-        <div className="summary-single-event" key={data.id}>
+        <div className="summary-single-event" key={index}>
           <div>{data.player.name}<span className="lineUps-number">{data.shirt_number}</span></div>
         </div>
       )
@@ -18,7 +18,7 @@ const LineUpStartings = props =>{
   const rightEvents = props.lineUpData.away_team.players.map((data, index) =>{
     if(data.event_player_type.category === "start"){
       return(
-        <div className="summary-single-event" key={data.id}>
+        <div className="summary-single-event" key={index}>
           <div><span className="lineUps-number">{data.shirt_number}</span>{data.player.name}</div>
         </div>
       )

@@ -7,7 +7,7 @@ import Loader from 'react-loader-spinner';
 const OthersNews = props => {
   
   const[isLoading, fetchedData] = useHttpsStore(
-    "https://articles/search?query=*&category=2019061411253008782",
+    "=*&category=2019061411253008782",
     "",
     "promo",
     "promoDate"
@@ -17,13 +17,13 @@ const OthersNews = props => {
 
   ? fetchedData.data.map((data, index) =>{
 
-    const imageUrl = data.image.data ? data.image.data.urls.uploaded.gallery : undefined;
+    const imageUrl = data.image.data ? data.image.data.urls.uploaded.original : undefined;
     const text = data.body[0] ? data.body[0].data.content : undefined;
     const link = data.body[1] ? data.body[1].data.content : undefined;
     
     if (data.category.title === "Promotion") {
       return(
-        <div key={data.id} className="promo-article col-md-6 col-sm-12">
+        <div key={index} className="promo-article col-md-6 col-sm-12">
           <div className="promo-article-box">
             <div className="news-photo">
               <div className="news-red-line"></div>

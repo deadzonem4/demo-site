@@ -24,7 +24,7 @@ const SummaryLeftCol = props => {
     }
     if(!data.home_team){
       return(
-        <div className="summary-single-event" key={data.id}>
+        <div className="summary-single-event" key={index}>
           {
             (data.type === "goal") ?
               (

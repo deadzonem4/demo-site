@@ -8,7 +8,7 @@ import LineUpSubs from './LineUpSubs';
 const LineUpModal = props => {
  
   const [isLoading, fetchedData] = useHttpsInterval(
-    `https://events/${props.fullData.id}/lineups`,
+    `/${props.fullData.id}/lineups`,
     ''
   );
   const teamsData = props.fullData;

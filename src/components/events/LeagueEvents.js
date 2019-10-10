@@ -1,15 +1,24 @@
 import SingleLeagueEvents from "./SingleLeagueEvents";
-import React, { Fragment } from "react";
+import React, { useState } from "react";
 import { useHttps } from "../Helpers";
 import Loader from 'react-loader-spinner';
 import moment from 'moment';
+import Standings from "./Standings";
 
 const LeagueEvents = props => {
 
   const[isLoading, fetchedData] = useHttps(
-    `https://matches?from_start_time=${moment().add(-7,'days').format("YYYY-MM-DD")}T15:00:00Z&to_start_time=${moment().add(7,'days').format("YYYY-MM-DD")}T15:00:00Z&season_ids=${props.seasonId}`,
+    `/matches?from_start_time=${moment().add(-7,'days').format("YYYY-MM-DD")}T15:00:00Z&to_start_time=${moment().add(7,'days').format("YYYY-MM-DD")}T15:00:00Z&season_ids=${props.seasonId}`,
     '',
   );
+  
+  const[isOpen, setIsOpen ] = useState(false);
+
+  const toggleStandings = () => {
+
+    isOpen ? setIsOpen(false) : setIsOpen(true);
+    
+  }
     
   if(fetchedData && fetchedData.length === 0) {
     return(
@@ -27,7 +36,7 @@ const LeagueEvents = props => {
   const topEvents = fetchedData
   ? fetchedData.map((data, index) =>{
     return(
-      <div className="league-box-content" key={data.id}>
+      <div className="league-box-content" key={index}>
         <SingleLeagueEvents data={data}/>
       </div>
     )
@@ -48,12 +57,28 @@ const LeagueEvents = props => {
       <div className="all-events-box league-box">
         {(filteredData.length > 0) ?
           (         
-          <Fragment>
+          <>
             <div className="popular-events-title">
-              <h4>{props.leagueName}</h4>
+              {
+                (props.leagueName === "Приятелски" || props.leagueName === "Световно" || props.leagueName === "Европейско" || props.leagueName === "Лига Европа" || props.leagueName === "Шампионска Лига") ?
+                (
+                  <h4>{props.leagueName}</h4> 
+                ) : 
+                (
+                  <h4>{props.leagueName}<span onClick={toggleStandings}>Класиране</span></h4> 
+                )
+              }
             </div>
-            {filteredData}
-          </Fragment>
+            {(isOpen && props.leagueName !== "Приятелски") ?
+              (<>
+                <Standings seasonId={props.seasonId}/>
+                {filteredData}
+              </>):
+              (
+                filteredData
+              )  
+            }
+          </>
           ) : 
           (
             <div>

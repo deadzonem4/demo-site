@@ -11,10 +11,10 @@ import skrill from '../images/payments/skrill.png';
 import { useHttpsStoreFooter } from './Helpers';
 import Loader from 'react-loader-spinner';
 
-const FooterPartners = props => {
+const FooterPartners = () => {
 
 const[isLoading, fetchedData] = useHttpsStoreFooter(
-  "https://api/partners-logo",
+  "/api/partners-logo",
   "",
   "footer",
   "footerDate"
@@ -24,7 +24,7 @@ const images = fetchedData
 
 ? fetchedData.map((data, index) =>
     <li key={index}>
-      <img src={"https://dev.winbet-bg.com/uploads/images/partners_logo/" + data.img_name} alt='winbet partner'/>
+      <img src={"/uploads/images/partners_logo/" + data.img_name} alt='winbet partner'/>
     </li>
   ) : [];
 

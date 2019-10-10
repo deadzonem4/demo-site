@@ -14,6 +14,10 @@ import EuropeFootballPage from './pages/articles/EuropeFootballPage';
 import TennisPage from './pages/articles/TennisPage';
 import WorldFootballPage from './pages/articles/WorldFootballPage';
 import SingleNewsPage from './pages/articles/SingleNewsPage';
+import VolleyBallPage from './pages/articles/VolleyBallPage';
+import BasketBallPage from './pages/articles/BasketBallPage';
+import BoxPage from './pages/articles/BoxPage';
+import OtherSportsPage from './pages/articles/OtherSportsPage';
 // ----------------Events
 import LiveEventsPage from './pages/events/LiveEventsPage';
 import FinishedEventsPage from './pages/events/FinishedEventsPage';
@@ -28,7 +32,7 @@ import PagesLayout from './layouts/PagesLayout';
 //---------------Styles
 import './styles/main.css';
 
-const App = props => {
+const App = () => {
 
   return (
     <BrowserRouter>
@@ -43,6 +47,10 @@ const App = props => {
           <AppRoute layout={MainLayout} path={"/articles/bg-football/:id"} component={BgFootballPage} />
           <AppRoute layout={MainLayout} path={"/articles/europe-football/:id"} component={EuropeFootballPage} />
 
+          <AppRoute layout={MainLayout} exact path="/articles/volleyball" component={VolleyBallPage} />
+          <AppRoute layout={MainLayout} exact path="/articles/basketball" component={BasketBallPage} />
+          <AppRoute layout={MainLayout} exact path="/articles/box" component={BoxPage} />
+          <AppRoute layout={MainLayout} exact path="/articles/other-sports" component={OtherSportsPage} />
           <AppRoute layout={MainLayout} exact path="/articles/tennis" component={TennisPage} />
           <AppRoute layout={MainLayout} exact path="/articles/world-football" component={WorldFootballPage} />
           <AppRoute layout={MainLayout} path={"/articles/:id"} component={SingleNewsPage} />

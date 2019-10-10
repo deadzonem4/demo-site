@@ -10,7 +10,7 @@ const SingleNewsPage = (props) => {
 				<SingleArticleData 
 					id={props.match.params.id}
 				>
-					<SingleArticle id={props.match.params.id} token=""/>
+					<SingleArticle id={props.match.params.id} token=''/>
 				</SingleArticleData>
 			</div>
 		</div>

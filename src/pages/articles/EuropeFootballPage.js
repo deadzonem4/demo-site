@@ -6,7 +6,7 @@ const EuropeFootballPage = props => {
   return (
   	<div className="home-content-wrapper">
       <div className="container">
-      <EuropeFootballNews title="Новини - Европейски Футбол" page={props.match.params.id}/>
+      <EuropeFootballNews title="Новини - Европейски футбол" page={props.match.params.id}/>
 		</div>
 	</div>
   );

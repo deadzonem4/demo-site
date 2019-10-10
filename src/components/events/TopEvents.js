@@ -17,7 +17,7 @@ const TopEvents = props => {
     const awayScore = single.away_score ? single.away_score.ordinary_time : undefined;
 
     return(
-      <Link key={single.id} className="single-event-box" to={`/event/${single.id}`}>
+      <Link key={id} className="single-event-box" to={`/event/${single.id}`}>
         <div className="event-info">
           { (single.event_status.code === "finished") ?
             (

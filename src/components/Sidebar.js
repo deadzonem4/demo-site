@@ -5,11 +5,11 @@ import { Link } from "react-router-dom";
 import { useHttpsStore } from './Helpers';
 import Loader from 'react-loader-spinner';
 
-const Sidebar = props => {
+const Sidebar = () => {
 
   
   const[isLoading, fetchedData] = useHttpsStore(
-    "https://articles/search?query=*&category=2019061411253008782",
+    "ategory=2019061411253008782",
     "",
     "promo",
     "promoDate"

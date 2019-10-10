@@ -4,7 +4,7 @@ import {
   NavLink
   } from 'reactstrap';
 
-const ScoresMenu = props => {
+const ScoresMenu = () => {
 
   return (
     <ul className="scores-menu">

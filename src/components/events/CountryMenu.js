@@ -87,7 +87,7 @@ const CountryMenu = props => {
             <div onClick={props.handleLeague} className="Премиер лига" id="9">Премиер лига</div>
           </Collapsible>
         </li>
-        <NavbarToggler onClick={toggle.bind(this)}>
+        <NavbarToggler onClick={toggle}>
           Още
           <i className="fas fa-angle-down"></i>
         </NavbarToggler>

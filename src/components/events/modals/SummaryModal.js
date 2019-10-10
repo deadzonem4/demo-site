@@ -8,7 +8,7 @@ import Loader from 'react-loader-spinner';
 const SummaryModal = props => {
   
   const [isLoading, fetchedData] = useHttpsInterval(
-    `https://events/${props.fullData.id}/incidents`,
+    `/events/${props.fullData.id}/incidents`,
     ''
   );
   const teamsData = props.fullData;

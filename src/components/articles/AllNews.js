@@ -6,7 +6,7 @@ import Sidebar from '../Sidebar';
 import {ReactTitle} from 'react-meta-tags';
 import ArticlePages from './ArticlePages';
 import Loader from 'react-loader-spinner';
-import { useHttps } from "../Helpers";
+import { useHttps, checkArticlesDate } from "../Helpers";
 
 const AllNews = props => {
 
@@ -15,7 +15,7 @@ const AllNews = props => {
   }, []);
 
   const [isLoading, fetchedData] = useHttps(
-    `https://articles?page=${props.page}`,
+    `articles?page=${props.page}&`,
     '',
     []
   );
@@ -26,7 +26,7 @@ const AllNews = props => {
 
     const imageUrl = data.image.data ? data.image.data.urls.cropped : undefined;
 
-    if (data.category.title !== "Promotion") {
+    if (data.category.title !== "Promotion" && checkArticlesDate(data.published_at)) {
       return(
         <Link to={`/articles/${data.id}`} className="single-news-box" key={data.id}>
           <div className="news-photo">
@@ -39,7 +39,7 @@ const AllNews = props => {
           </div>
           <div className="news-content">
             <h2 className="title">{data.title}</h2>
-            <FullDate date={data.created_at} customClass="time" />
+            <FullDate date={data.published_at} customClass="time" />
           </div>
         </Link>
       )

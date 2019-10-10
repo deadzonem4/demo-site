@@ -1,6 +1,6 @@
 import React from 'react';
 
-const ErrorPage = props => {
+const ErrorPage = () => {
 
   return (
 		<div>

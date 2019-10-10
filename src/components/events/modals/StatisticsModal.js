@@ -6,7 +6,7 @@ import Loader from 'react-loader-spinner';
 const StatisticsModal = props => {
 
   const [isLoading, fetchedData] = useHttpsInterval(
-    `https://events/${props.fullData.id}/teamstats`,
+    `/events/${props.fullData.id}/teamstats`,
     ''
   );
   const teamsData = props.fullData;

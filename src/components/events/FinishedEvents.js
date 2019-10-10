@@ -7,10 +7,10 @@ import Loader from 'react-loader-spinner';
 
 var leagueTitle = null;
 
-const LiveEvents = props => {
+const LiveEvents = () => {
   
 	const [isLoading, fetchedData] = useHttpsInterval(
-    `https://events?from_time=${moment().subtract(1, 'days').format("YYYY-MM-DD")}T${moment().format("HH")}%3A48%3A44%2B00%3A00&to_time=${moment().format("YYYY-MM-DD")}T${moment().format("HH")}%3A48%3A44%2B00%3A00`,
+    `/events?from_time=${moment().subtract(1, 'days').format("YYYY-MM-DD")}T${moment().format("HH")}%3A48%3A44%2B00%3A00&to_time=${moment().format("YYYY-MM-DD")}T${moment().format("HH")}%3A48%3A44%2B00%3A00`,
     ''
   );
 
@@ -30,7 +30,7 @@ const LiveEvents = props => {
 		}
 		if (data.event_status.code === "finished") {
 		  return(
-		  	<div key={data.id}>
+		  	<div key={index}>
 		  	  <div className="league-title">
 				  {checkTitle ? 
 				  	(

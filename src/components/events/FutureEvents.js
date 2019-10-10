@@ -7,10 +7,10 @@ import Loader from 'react-loader-spinner';
 
 var leagueTitle = null;
 
-const FutureEvents = props => {
+const FutureEvents = () => {
   
 	const [isLoading, fetchedData] = useHttpsInterval(
-    'https://events',
+    '/events',
     ''
   );
 
@@ -30,7 +30,7 @@ const FutureEvents = props => {
     }
     if (data.event_status.code === "not_started") {
       return(
-        <div key={data.id}>
+        <div key={index}>
           <div className="league-title">
             {checkTitle ? 
               (

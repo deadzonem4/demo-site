@@ -6,7 +6,7 @@ import Loader from 'react-loader-spinner';
 
 var leagueTitle = null;
 
-const LiveEvents = props => {
+const LiveEvents = () => {
 
   useEffect(() => {
     leagueTitle = null;
@@ -20,7 +20,7 @@ const LiveEvents = props => {
 
 
 	const [isLoading, fetchedData] = useHttpsInterval(
-    'https://events/live',
+    '/events/live',
     ''
   );
 

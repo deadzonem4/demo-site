@@ -6,7 +6,7 @@ const BgFootballPage = props => {
   return (
   	<div className="home-content-wrapper">
       <div className="container">
-      <BgFootballNews title="Новини - Бг Футбол" page={props.match.params.id}/>
+        <BgFootballNews title="Новини - БГ футбол" page={props.match.params.id}/>
 		</div>
 	</div>
   );

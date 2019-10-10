@@ -3,10 +3,10 @@ import TopEvents from "./TopEvents";
 import { useHttpsInterval } from "../Helpers";
 import Loader from 'react-loader-spinner';
 
-const PopularEvents = props => {
+const PopularEvents = () => {
 
   const [isLoading, fetchedData] = useHttpsInterval(
-    'https://events?group_by=tournament_season_stage&client_order=sportalios',
+    '/events?group_by=tournament_season_stage&client_order=sportalios',
     ''
   );
 

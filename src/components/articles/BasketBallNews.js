@@ -7,14 +7,14 @@ import {ReactTitle} from 'react-meta-tags';
 import Loader from 'react-loader-spinner';
 import { useHttps, checkArticlesDate, sortArticles } from "../Helpers";
 
-const TennisNews = props => {
+const BasketBallNews = props => {
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
   const [isLoading, fetchedData] = useHttps(
-    `&category=2019061908334998696`,
+    ``,
     '',
     []
   ); 
@@ -67,4 +67,4 @@ const TennisNews = props => {
   );
 }
 
-export default TennisNews;
+export default BasketBallNews;

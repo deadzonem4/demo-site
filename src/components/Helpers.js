@@ -1,4 +1,6 @@
 import { useEffect, useState } from 'react';
+import moment from 'moment';
+import localization from 'moment/locale/bg';
 
 export const useHttps = (url, token) => {
 
@@ -15,10 +17,9 @@ export const useHttps = (url, token) => {
         project: "winbet.bg"
       }), 
     })
-    .then(response => {
-      if (!response.ok) { throw response }
-      return response.json()
-    })
+    .then(response => (
+      response.json())
+    )
     .then(data => {
       setLoading(false);
       setData(data)
@@ -47,10 +48,9 @@ export const useHttpsInterval = (url, token) => {
           accept: "application/json"
         }),
       })
-      .then(response => {
-        if (!response.ok) { throw response }
-        return response.json()
-      })
+      .then(response => (
+        response.json())
+      )
       .then(data => {
         setLoading(false);
         setData(data);
@@ -92,13 +92,12 @@ export const useHttpsStore = (url, token, store, storeDate) => {
           project: "winbet.bg"
         }),
       })
-      .then(response => {
-        if (!response.ok) { throw response }
-        return response.json()
-      })
+      .then(response => (
+        response.json())
+      )
       .then(data => {
         setLoading(false);
-        setData(data);  
+        setData(data);
         sessionStorage.setItem(store, JSON.stringify(data));
         sessionStorage.setItem(storeDate, Date.now());
       })
@@ -136,10 +135,9 @@ export const useHttpsStoreFooter = (url, token, store, storeDate) => {
       fetch(url, { 
         method: 'get'
       })
-      .then(response => {
-        if (!response.ok) { throw response }
-        return response.json()
-      })
+      .then(response => (
+        response.json())
+      )
       .then(data => {
         setLoading(false);
         setData(data);
@@ -173,10 +171,10 @@ export function waitFor(ms) {
 export async function getGallery(galleryId, token) {
  let options = {
     method: "GET",
-    url: `https://galleries/${galleryId}`,
+    url: ``,
     headers: {
       "content-type": "application/json",
-      authorization: ` ${token}`,
+      authorization: `Bearer ${token}`,
       accept: "application/json",
       project: "winbet.bg"
     },
@@ -189,10 +187,10 @@ export async function getGallery(galleryId, token) {
 export async function getImage(imageId, token) {
   let options = {
     method: "GET",
-    url: `https://images/${imageId}`,
+    url: ``,
     headers: {
       "content-type": "application/json",
-      authorization: ` ${token}`,
+      authorization: `Bearer ${token}`,
       accept: "application/json",
       project: "winbet.bg"
     },
@@ -205,10 +203,10 @@ export async function getImage(imageId, token) {
 export async function getVideo(videoId, token) {
   let options = {
     method: "GET",
-    url: `https://images/${videoId}`,
+    url: ``,
     headers: {
       "content-type": "application/json",
-      authorization: ` ${token}`,
+      authorization: `Bearer ${token}`,
       accept: "application/json",
       project: "winbet.bg"
     },
@@ -216,4 +214,50 @@ export async function getVideo(videoId, token) {
   };
 
   return request(options);
+}
+
+export const checkArticlesDate = (date) => {
+
+  const newsDate = `${moment(date).locale("bg", localization).format("YYYY-MM-DDTHH:mm")}`;
+  const currDate = `${moment().locale("bg", localization).format("YYYY-MM-DDTHH:mm")}`;
+  const dateChecker = (newsDate < currDate)? true : false;
+  
+  return(dateChecker);
+}
+
+export const sortArticles = (array) => {
+
+  const sortedArray = array ? array.sort((a,b) => (a.published_at < b.published_at) ? 1 : ((b.published_at < a.published_at) ? -1 : 0)) : [];
+  
+  return (sortedArray);
+}
+
+export const useHandleHttp = (url) =>{
+
+  const [leagueSeason, setLeagueSeason] = useState(0);
+
+  useEffect(() => {
+
+    fetch(url, { 
+      method: 'get', 
+      headers: new Headers({
+        "content-type": "application/json",
+        authorization: "",
+        accept: "application/json"
+      }), 
+    })
+    .then(response => (
+      response.json())
+    )
+    .then(api => {
+      setLeagueSeason(api.seasons[0].id);
+      sessionStorage.setItem('season', JSON.stringify(leagueSeason));
+    })
+    .catch(error => {
+      console.log('error');
+    });
+
+  }, [leagueSeason, url]);
+
+  return leagueSeason;
 }

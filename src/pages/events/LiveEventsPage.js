@@ -3,7 +3,7 @@ import ScoresMenu from '../../components/events/ScoresMenu';
 import LiveEvents from '../../components/events/LiveEvents';
 import {ReactTitle} from 'react-meta-tags';
 
-const AllEventsPage = (props) => {
+const AllEventsPage = () => {
   
   return (
 		<div className="live-scores-page">

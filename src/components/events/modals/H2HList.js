@@ -6,7 +6,7 @@ import Loader from 'react-loader-spinner';
 const H2HList = props => {
 
   const[isLoading, fetchedData] = useHttpsInterval(
-    `https://teams/${props.id}/events`,
+    `/teams/${props.id}/events`,
     ''
   );
 
@@ -31,7 +31,7 @@ const H2HList = props => {
     fetchedData.map((data, index) =>{
     if (data.event_status.code === "finished") {
       return(
-        <div key={data.id}>
+        <div key={index}>
           <div className="event-info h2h-list">
             <span className="event-status">
               <EventsDate date={data.finished_at} />

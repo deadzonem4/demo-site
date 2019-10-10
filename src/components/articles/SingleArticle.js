@@ -183,7 +183,7 @@ class SingleArticle extends Component {
         ? article.image.data.urls.uploaded.gallery
         : undefined,
         title : article.title,
-        created_at: article.created_at
+        created_at: article.published_at
       });
     });
   };

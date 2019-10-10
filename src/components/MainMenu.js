@@ -26,7 +26,7 @@ const MainMenu = props => {
           <Link className="navbar-brand" to="/">
             <img src={logo}  alt="winbet"/>
           </Link>
-          <NavbarToggler onClick={toggle.bind(this)} />
+          <NavbarToggler onClick={toggle} />
           <Collapse isOpen={isOpen} navbar>
             <Nav className="ml-auto" navbar>
               <NavItem>

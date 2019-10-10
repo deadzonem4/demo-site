@@ -5,7 +5,7 @@ import Slider from "react-slick";
 import { Link } from "react-router-dom";
 import FullDate from "../FullDate";
 import noImage from '../../images/no_image.jpg';
-import { useHttps } from "../Helpers";
+import { useHttps, checkArticlesDate } from "../Helpers";
 
 const ImportantNews = props => {
   
@@ -36,7 +36,7 @@ const ImportantNews = props => {
   };
 
   const [ , fetchedData] = useHttps(
-    `https://articles`,
+    `&sort[]=published_at%3Adesc`,
     '',
     []
   );
@@ -47,9 +47,9 @@ const ImportantNews = props => {
 
     const imageUrl = data.image.data ? data.image.data.urls.cropped : undefined;
 
-    if (data.important && data.category.title !== "Promotion") {
+    if (data.important && data.category.title !== "Promotion" && checkArticlesDate(data.published_at)) {
       return(
-        <div key={data.id} className="single-slide">
+        <div key={index} className="single-slide">
           <Link to={`/articles/${data.id}`} className="important-news-box">
             <div className="news-photo-important">
               <div className="news-red-line"></div>
@@ -62,7 +62,7 @@ const ImportantNews = props => {
             <div className="news-content-important">
               <p className="news-category">{data.category.title}</p>
               <h2 className="title">{data.title}</h2>
-              <FullDate date={data.created_at} customClass="time" />
+              <FullDate date={data.published_at} customClass="time" />
             </div>
           </Link>
           <div className="important-news-links">
